@@ -1,0 +1,43 @@
+# ==============================================================================
+# Git Attributes for Line Endings and File Types
+# ==============================================================================
+
+# Set default behavior to automatically normalize line endings
+* text=auto eol=lf
+
+# Verilog and HDL files (always use LF)
+*.v text eol=lf
+*.vh text eol=lf
+*.sv text eol=lf
+*.svh text eol=lf
+
+# Scripts (TCL, Shell, Python)
+*.tcl text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+
+# Windows Batch scripts (require CRLF to execute properly)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Documentation and Configuration
+*.md text eol=lf
+*.txt text eol=lf
+*.rpt text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.xml text eol=lf
+*.xpr text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.bit binary
+*.bin binary
+*.dcp binary
+*.wdb binary

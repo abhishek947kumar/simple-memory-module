@@ -1,0 +1,64 @@
+# ==============================================================================
+# Git Ignore for AMD/Xilinx Vivado & Hardware Design Projects
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Vivado Logs, Journals, and Temporary Files
+# ------------------------------------------------------------------------------
+*.jou
+*.log
+*.str
+*.pb
+*.dcp
+*.wdb
+*.vcd
+*.bit
+*.bin
+*.ltx
+*.rpt_unconstrained
+.Xil/
+hd_visual/
+xsim.dir/
+webtalk/
+webtalk*.log
+webtalk*.jou
+
+# ------------------------------------------------------------------------------
+# Vivado Project Generated Directories & Caches
+# ------------------------------------------------------------------------------
+vivado_proj/*.cache/
+vivado_proj/*.hw/
+vivado_proj/*.ip_user_files/
+vivado_proj/*.runs/
+vivado_proj/*.sim/
+vivado_proj/*.gen/
+vivado_proj/*.data/
+
+# Specific files in vivado_proj
+vivado_proj/*.bak
+vivado_proj/.jobs/
+vivado_proj/*.zip
+
+# ------------------------------------------------------------------------------
+# Simulation Artifacts (ModelSim, Questa, VCS, Riviera, Icarus Verilog)
+# ------------------------------------------------------------------------------
+*.o
+*.out
+*.vcd
+*.vvp
+work/
+transcript
+vsim.wlf
+
+# ------------------------------------------------------------------------------
+# Operating System & Editor Files
+# ------------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

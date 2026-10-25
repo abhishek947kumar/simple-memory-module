@@ -1,0 +1,56 @@
+name: RTL Simulation CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  simulate:
+    name: Verify Verilog Testbenches
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Icarus Verilog
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y iverilog
+
+      - name: Verify Single-Port RAM Simulation
+        run: |
+          echo "=== Compiling Single-Port RAM ==="
+          iverilog -g2001 -o sim_single_port.vvp rtl/single_port_ram.v tb/tb_single_port_ram.v
+          echo "=== Executing Single-Port RAM Testbench ==="
+          vvp sim_single_port.vvp > sim_single_port.log
+          cat sim_single_port.log
+          if grep -q "ERROR" sim_single_port.log; then
+            echo "[FAIL] Single-Port RAM test encountered errors!"
+            exit 1
+          fi
+          if ! grep -q "ALL CHECKS PASSED SUCCESSFULLY" sim_single_port.log; then
+            echo "[FAIL] Pass string not found in simulation output!"
+            exit 1
+          fi
+          echo "[SUCCESS] Single-Port RAM verified successfully."
+
+      - name: Verify Dual-Port RAM Simulation
+        run: |
+          echo "=== Compiling Dual-Port RAM ==="
+          iverilog -g2001 -o sim_dual_port.vvp rtl/dual_port_ram.v tb/tb_dual_port_ram.v
+          echo "=== Executing Dual-Port RAM Testbench ==="
+          vvp sim_dual_port.vvp > sim_dual_port.log
+          cat sim_dual_port.log
+          if grep -q "ERROR" sim_dual_port.log; then
+            echo "[FAIL] Dual-Port RAM test encountered errors!"
+            exit 1
+          fi
+          if ! grep -q "DUAL-PORT RAM TESTS PASSED" sim_dual_port.log; then
+            echo "[FAIL] Pass string not found in simulation output!"
+            exit 1
+          fi
+          echo "[SUCCESS] Dual-Port RAM verified successfully."

@@ -33,8 +33,7 @@ Simple Memory Module/
 ├── scripts/
 │   ├── create_project.tcl      # TCL script to build/rebuild Vivado project from scratch
 │   ├── run_sim.tcl             # TCL script to execute behavioral simulation
-│   ├── run_synth.tcl           # TCL script to synthesize and report memory usage
-│   └── generate_screenshots.py # Script to render simulation & synthesis figures
+│   └── run_synth.tcl           # TCL script to synthesize and report memory usage
 ├── reports/
 │   ├── timing_synth.rpt        # Post-synthesis timing report
 │   └── utilization_synth.rpt   # Post-synthesis FPGA resource utilization report
